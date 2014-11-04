@@ -1,0 +1,12 @@
+<% require 'ipaddr' 
+@netmask = IPAddr.new('255.255.255.255') 
+for @network in @networks
+  @ipaddr = IPAddr.new @network
+  @cidr = @network.split('/').last
+  @range = @ipaddr.to_range()
+  for @addr in @range 
+    if @addr != @range.first and @addr != @range.last -%>
+<%= @addr %>:<%= @netmask.mask(@cidr) %>:<%= @range.last %>
+<%  end 
+  end 
+end -%>
