@@ -1,0 +1,6 @@
+# Managed by puppet
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/<%= @version %>/centos<%= scope.lookupvar('lsbmajdistrelease') %>-amd64/
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1

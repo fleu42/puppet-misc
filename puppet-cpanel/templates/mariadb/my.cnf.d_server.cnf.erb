@@ -1,0 +1,45 @@
+# Managed by puppet
+#
+# These groups are read by MariaDB server.
+# Use it for options that only the server (but not clients) should see
+#
+# See the examples of server my.cnf files in /usr/share/mysql/
+#
+
+# this is read by the standalone daemon and embedded servers
+[server]
+
+# this is only for the mysqld standalone daemon
+[mysqld]
+max_connections=500
+key_buffer=250M
+table_cache=5000
+open_files_limit=50000
+join_buffer_size=6M
+tmp_table_size=512M
+max_heap_table_size=512M
+max_allowed_packet=32M
+innodb_file_per_table=1
+query_cache_size=512M
+query_cache_type=1
+query_cache_limit=2M
+thread_cache_size=20
+tmpdir=/var/mysql_tmp
+innodb_buffer_pool_size=134217728
+max_allowed_packet=268435456
+
+# this is only for embedded server
+[embedded]
+
+# This group is only read by MariaDB servers, not by MySQL.
+# If you use the same .cnf file for MySQL and MariaDB,
+# you can put MariaDB-only options here
+[mariadb]
+slow_query_log
+log_queries_not_using_indexes 
+
+# This group is only read by MariaDB-10.0 servers.
+# If you use the same .cnf file for MariaDB of different versions,
+# use this group for options that older servers don't understand
+[mariadb-10.0]
+
